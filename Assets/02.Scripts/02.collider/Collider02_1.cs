@@ -18,7 +18,8 @@ public class Collider02_1 : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter(Collider other)
+
+    void OnTriggerEnter(Collider other)
     {
         Debug.Log($"Trigger !");
         collider021 = true;

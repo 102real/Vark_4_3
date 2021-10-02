@@ -20,18 +20,42 @@ public class Scense_02_Manager : MonoBehaviour
 
     public GameObject col021;
 
+    Collider02_1 collider02_1;
+
+    private bool coroutioneEnd01 = false;
+    private bool coroutioneStart01 = false;
+    private int coroutioneCount01 = 0;
+
     
+
 
     private void Start()
     {
-        
+        StartCoroutine("SoundC1");
+
+        collider02_1 = GameObject.Find("Collider02_1").GetComponent<Collider02_1>();
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (coroutioneEnd01)
         {
-            StartCoroutine("SoundC1");
+            StopCoroutine("SoundC1");
+            coroutioneStart01 = true;
+            
+        }
+
+        if (coroutioneStart01 && coroutioneCount01<1)
+        {
+            StartCoroutine("SoundC2");
+            coroutioneCount01++;
+        }
+
+        
+
+        if (collider02_1.collider021 == true)
+        {
+
         }
 
         
@@ -41,10 +65,24 @@ public class Scense_02_Manager : MonoBehaviour
 
 
     IEnumerator SoundC1()
-    {
-        Debug.Log("시작");
-        Play2_1.Play();
+    { 
         yield return new WaitForSeconds(4f);
-        Debug.Log("4초 지남");
+        Debug.Log("SoundC1 시작");
+        Play2_1.Play();
+        yield return new WaitForSeconds(15f);
+        Debug.Log("SoundC1 끝남");
+        coroutioneEnd01 = true;
+
     }
+
+    IEnumerator SoundC2()
+    {
+        yield return new WaitForSeconds(2f);
+        Debug.Log("SoundC2 시작");
+        Play2_2.Play();
+        yield return new WaitForSeconds(15f);
+        Debug.Log("SoundC2 끝남");
+        
+    }
+  
 }
