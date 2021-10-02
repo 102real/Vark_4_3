@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collider02_2 : MonoBehaviour
+public class Collider02_7 : MonoBehaviour
 {
 
-    public bool collider022 = false;
+    public bool collider027 = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
         
     }
 
@@ -25,7 +24,7 @@ public class Collider02_2 : MonoBehaviour
         if(col.tag == "Ontrig")
         {
             Debug.Log($"Trigger !");
-            collider022 = true;
+            collider027 = true;
         }
         
     }
