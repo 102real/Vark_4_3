@@ -50,9 +50,10 @@ public class Scense_02_Manager : MonoBehaviour
 
     //버튼 꾸러미
     public GameObject btSet;
+    public GameObject btSetbt;
 
     //버튼 실행
-    bool btGo;
+    bool btGo = false;
 
     private int coroutioneCount01 = 0;
     private int coroutioneCountE01 = 0;
@@ -95,6 +96,7 @@ public class Scense_02_Manager : MonoBehaviour
     private bool coroutioneEnd08 = false;
     private bool coroutioneStart09 = false;
     private int coroutioneCount09 = 0;
+    private int coroutioneCountE09 = 0;
 
     private bool coroutioneEnd09 = false;
     private bool coroutioneStart10 = false;
@@ -125,6 +127,8 @@ public class Scense_02_Manager : MonoBehaviour
         colt05 = collider02_5.GetComponent<Collider02_5>().collider025;
         colt06 = collider02_6.GetComponent<Collider02_6>().collider026;
         colt07 = collider02_7.GetComponent<Collider02_7>().collider027;
+
+        
 
         //사운드1 코루틴 중지(콜라이터, 트리거 생성)
         if (coroutioneEnd01 && coroutioneCountE01<1)
@@ -163,11 +167,13 @@ public class Scense_02_Manager : MonoBehaviour
             point02.SetActive(false);
             StartCoroutine("SoundC3");
             coroutioneCount03++;
+            
         }
 
         //사운드3 코루틴 중지(콜라이터, 트리거 생성)
         if (coroutioneEnd03 && coroutioneCountE03 < 1)
         {
+            
             StopCoroutine("SoundC3");
             coroutioneStart04 = true;
             coroutioneCountE03++;
@@ -177,15 +183,77 @@ public class Scense_02_Manager : MonoBehaviour
         }
 
 
-        //사운드3 코루틴 스타트
-        if (coroutioneStart04 && colt03 && coroutioneCount03 < 1)
+        //사운드4 코루틴 스타트
+        if (coroutioneStart04 && colt03 && coroutioneCount04 < 1)
         {
+            collider02_3.SetActive(false);
+            point03.SetActive(false);
             StartCoroutine("SoundC4");
-            coroutioneCount03++;
+            coroutioneCount04++;
+        }
+
+        //사운드4 코루틴 중지(콜라이터, 트리거 생성)
+        if (btGo && coroutioneCountE04 < 1)
+        {
+            btSetbt.SetActive(false);
+            StopCoroutine("SoundC4");
+            coroutioneStart05 = true;
+
+
+        }
+
+
+        //사운드6 코루틴 스타트
+        if (coroutioneStart05 && coroutioneCount06 < 1)
+        {
+            
+            StartCoroutine("SoundC6");
+            coroutioneCount06++;
+        }
+
+        //사운드6 코루틴 중지(콜라이터, 트리거 생성)
+        if (coroutioneEnd06 && coroutioneCountE06 < 1)
+        {
+            coroutioneCountE06++;
+            StopCoroutine("SoundC6");
+            coroutioneStart09 = true;
+            collider02_5.SetActive(true);
+            point05.SetActive(true);
+
         }
 
 
 
+        //사운드9 코루틴 스타트
+        if (coroutioneStart09 && colt05 && coroutioneCount05 < 1)
+        {
+            collider02_5.SetActive(false);
+            point05.SetActive(false);
+            StartCoroutine("SoundC9");
+            coroutioneCount05++;
+
+        }
+
+        //사운드9 코루틴 중지(콜라이터, 트리거 생성)
+        if (coroutioneEnd09 && coroutioneCountE09 < 1)
+        {
+            coroutioneCountE09++;
+            StopCoroutine("SoundC9");
+            coroutioneStart11 = true;
+            collider02_6.SetActive(true);
+            point06.SetActive(true);
+
+        }
+
+        //사운드11 코루틴 스타트
+        if (coroutioneStart11 && colt06 && coroutioneCount06 < 1)
+        {
+            collider02_6.SetActive(false);
+            point06.SetActive(false);
+            StartCoroutine("SoundC11");
+            coroutioneCount06++;
+
+        }
     }
 
     public void ButtonGo()
@@ -236,13 +304,17 @@ public class Scense_02_Manager : MonoBehaviour
         Play2_5.Play();
         yield return new WaitForSeconds(10f);
         Debug.Log("SoundC5 끝남");
-    }
-    IEnumerator SoundC5()
-    {
-        Debug.Log("SoundC5 시작");
-        Play2_5.Play();
+
+        btSet.SetActive(true);
+        btSetbt.SetActive(false);
         yield return new WaitForSeconds(10f);
-        Debug.Log("SoundC5 끝남");
+        btSetbt.SetActive(true);
+    }
+    IEnumerator Btcount()
+    {
+        
+        yield return new WaitForSeconds(10f);
+        btSetbt.SetActive(false);
         coroutioneEnd05 = true;
     }
 
@@ -252,41 +324,34 @@ public class Scense_02_Manager : MonoBehaviour
         Play2_6.Play();
         yield return new WaitForSeconds(3f);
         Debug.Log("SoundC6 끝남");
-        coroutioneEnd06 = true;
-    }
+        
 
-    IEnumerator SoundC7()
-    {
         Debug.Log("SoundC7 시작");
         Play2_7.Play();
         yield return new WaitForSeconds(11f);
         Debug.Log("SoundC7 끝남");
-    }
 
-    IEnumerator SoundC8()
-    {
         Debug.Log("SoundC8 시작");
         Play2_8.Play();
         yield return new WaitForSeconds(2f);
         Debug.Log("SoundC8 끝남");
+        coroutioneEnd06 = true;
     }
-
     IEnumerator SoundC9()
     {
         Debug.Log("SoundC9 시작");
-        Play2_3.Play();
+        Play2_9.Play();
         yield return new WaitForSeconds(12f);
         Debug.Log("SoundC9 끝남");
-    }
 
-    IEnumerator SoundC10()
-    {
         Debug.Log("SoundC10 시작");
         Play2_10.Play();
         yield return new WaitForSeconds(9f);
         Debug.Log("SoundC10 끝남");
+        coroutioneEnd09 = true;
     }
 
+    
     IEnumerator SoundC11()
     {
         Debug.Log("SoundC11 시작");
