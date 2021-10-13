@@ -248,11 +248,10 @@ public class Scense_02_Manager : MonoBehaviour
         //사운드11 코루틴 스타트
         if (coroutioneStart11 && colt06 && coroutioneCount06 < 1)
         {
+            coroutioneCount06++;
             collider02_6.SetActive(false);
             point06.SetActive(false);
             StartCoroutine("SoundC11");
-            coroutioneCount06++;
-
         }
     }
 
@@ -265,7 +264,8 @@ public class Scense_02_Manager : MonoBehaviour
     
 
     IEnumerator SoundC1()
-    { 
+    {
+        yield return new WaitForSeconds(4f);
         Debug.Log("SoundC1 시작");
         Play2_1.Play();
         yield return new WaitForSeconds(15f);
