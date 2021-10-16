@@ -10,6 +10,7 @@ public class Scense_01_Manager : MonoBehaviour
 
     public GameObject StartMap;
     public GameObject Scense01;
+    public GameObject ChrDB;
 
 
     private Animator PadeCtr;
@@ -44,12 +45,14 @@ public class Scense_01_Manager : MonoBehaviour
         {
             count01++;
             StopCoroutine("GoGo1");
-            
+            StartCoroutine("GoGo2");
+
         }
 
         if (start02 & count02 <2)
         {
             count02++;
+            StopCoroutine("GoGo2");
             SceneManager.LoadScene("cave scene 2");
 
         }
@@ -57,8 +60,6 @@ public class Scense_01_Manager : MonoBehaviour
 
     IEnumerator GoGo1()
     {
-
-        
         Debug.Log("첫코루틴종료");
         yield return new WaitForSeconds(10f);
         PadeCtr.SetTrigger("FadeOut01");
@@ -73,7 +74,11 @@ public class Scense_01_Manager : MonoBehaviour
     IEnumerator GoGo2()
     {
         yield return new WaitForSeconds(4f);
-
+        ChrDB.SetActive(true);
+        yield return new WaitForSeconds(90f);
         start02 = true;
     }
+
+
+
 }
