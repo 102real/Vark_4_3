@@ -12,6 +12,8 @@ public class Scense_02_Manager : MonoBehaviour
     public GameObject Success05;
     public GameObject Success06;
 
+    public GameObject FlowerHM;
+
 
     // 오디오소스(재생파일)
     public AudioSource Play2_1;
@@ -250,6 +252,7 @@ public class Scense_02_Manager : MonoBehaviour
         if (coroutioneStart09 && colt05 && coroutioneCount05 < 1)
         {
             Success05.SetActive(true);
+            FlowerHM.SetActive(true);
             collider02_5.SetActive(false);
             point05.SetActive(false);
             StartCoroutine("SoundC9");
