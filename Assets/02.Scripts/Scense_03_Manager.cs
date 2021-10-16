@@ -10,9 +10,6 @@ public class Scense_03_Manager : MonoBehaviour
     {
         StartCoroutine("SoundC3_1");
 
-        
-
-
     }
 
     void Update()

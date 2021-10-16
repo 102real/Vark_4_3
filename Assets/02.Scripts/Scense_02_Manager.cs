@@ -1,9 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Scense_02_Manager : MonoBehaviour
 {
+    public GameObject Success01;
+    public GameObject Success02;
+    public GameObject Success03;
+    public GameObject Success04;
+    public GameObject Success05;
+    public GameObject Success06;
+
+
     // 오디오소스(재생파일)
     public AudioSource Play2_1;
     public AudioSource Play2_2;
@@ -101,6 +110,7 @@ public class Scense_02_Manager : MonoBehaviour
     private bool coroutioneEnd09 = false;
     private bool coroutioneStart10 = false;
     private int coroutioneCount10 = 0;
+    private int coroutioneCountE10 =0;
 
     private bool coroutioneEnd10 = false;
     private bool coroutioneStart11 = false;
@@ -133,6 +143,7 @@ public class Scense_02_Manager : MonoBehaviour
         //사운드1 코루틴 중지(콜라이터, 트리거 생성)
         if (coroutioneEnd01 && coroutioneCountE01<1)
         {
+            
             StopCoroutine("SoundC1");
             coroutioneStart02 = true;
             coroutioneCountE01++;
@@ -143,6 +154,7 @@ public class Scense_02_Manager : MonoBehaviour
         //사운드2 코루틴 스타트
         if (coroutioneStart02  && colt01 && coroutioneCount02<1)
         {
+            Success01.SetActive(true);
             collider02_1.SetActive(false);
             point01.SetActive(false);
             StartCoroutine("SoundC2");
@@ -153,6 +165,8 @@ public class Scense_02_Manager : MonoBehaviour
         if (coroutioneEnd02 && coroutioneCountE02<1)
         {
             StopCoroutine("SoundC2");
+            
+
             coroutioneStart03 = true;
             coroutioneCountE02++;
             collider02_2.SetActive(true);
@@ -163,6 +177,7 @@ public class Scense_02_Manager : MonoBehaviour
         //사운드3 코루틴 스타트
         if (coroutioneStart03 && colt02 && coroutioneCount03 < 1)
         {
+            Success02.SetActive(true);
             collider02_2.SetActive(false);
             point02.SetActive(false);
             StartCoroutine("SoundC3");
@@ -174,6 +189,7 @@ public class Scense_02_Manager : MonoBehaviour
         if (coroutioneEnd03 && coroutioneCountE03 < 1)
         {
             
+
             StopCoroutine("SoundC3");
             coroutioneStart04 = true;
             coroutioneCountE03++;
@@ -186,6 +202,7 @@ public class Scense_02_Manager : MonoBehaviour
         //사운드4 코루틴 스타트
         if (coroutioneStart04 && colt03 && coroutioneCount04 < 1)
         {
+            Success03.SetActive(true);
             collider02_3.SetActive(false);
             point03.SetActive(false);
             StartCoroutine("SoundC4");
@@ -195,6 +212,8 @@ public class Scense_02_Manager : MonoBehaviour
         //사운드4 코루틴 중지(콜라이터, 트리거 생성)
         if (btGo && coroutioneCountE04 < 1)
         {
+            
+
             btSetbt.SetActive(false);
             StopCoroutine("SoundC4");
             coroutioneStart05 = true;
@@ -206,7 +225,7 @@ public class Scense_02_Manager : MonoBehaviour
         //사운드6 코루틴 스타트
         if (coroutioneStart05 && coroutioneCount06 < 1)
         {
-            
+            Success04.SetActive(true);
             StartCoroutine("SoundC6");
             coroutioneCount06++;
         }
@@ -214,6 +233,9 @@ public class Scense_02_Manager : MonoBehaviour
         //사운드6 코루틴 중지(콜라이터, 트리거 생성)
         if (coroutioneEnd06 && coroutioneCountE06 < 1)
         {
+
+            
+
             coroutioneCountE06++;
             StopCoroutine("SoundC6");
             coroutioneStart09 = true;
@@ -227,6 +249,7 @@ public class Scense_02_Manager : MonoBehaviour
         //사운드9 코루틴 스타트
         if (coroutioneStart09 && colt05 && coroutioneCount05 < 1)
         {
+            Success05.SetActive(true);
             collider02_5.SetActive(false);
             point05.SetActive(false);
             StartCoroutine("SoundC9");
@@ -237,6 +260,8 @@ public class Scense_02_Manager : MonoBehaviour
         //사운드9 코루틴 중지(콜라이터, 트리거 생성)
         if (coroutioneEnd09 && coroutioneCountE09 < 1)
         {
+            
+
             coroutioneCountE09++;
             StopCoroutine("SoundC9");
             coroutioneStart11 = true;
@@ -248,10 +273,21 @@ public class Scense_02_Manager : MonoBehaviour
         //사운드11 코루틴 스타트
         if (coroutioneStart11 && colt06 && coroutioneCount06 < 1)
         {
+            Success06.SetActive(true);
+
+            Success05.SetActive(true);
             coroutioneCount06++;
             collider02_6.SetActive(false);
             point06.SetActive(false);
             StartCoroutine("SoundC11");
+        }
+
+        if (coroutioneStart10 & coroutioneCountE10 < 1)
+        {
+            StopCoroutine("SoundC11");
+            coroutioneCountE10++;
+            SceneManager.LoadScene("cave scene 3");
+
         }
     }
 
@@ -358,6 +394,8 @@ public class Scense_02_Manager : MonoBehaviour
         Play2_11.Play();
         yield return new WaitForSeconds(4f);
         Debug.Log("SoundC11 끝남");
+
+        coroutioneStart10 = true;
     }
 
    

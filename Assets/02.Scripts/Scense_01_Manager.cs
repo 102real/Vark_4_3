@@ -22,10 +22,6 @@ public class Scense_01_Manager : MonoBehaviour
     int count02 = 0;
 
 
-
-
-
-
     void Start()
     {
         PadeCtr = PadeObj.GetComponent<Animator>();
@@ -73,7 +69,7 @@ public class Scense_01_Manager : MonoBehaviour
 
     IEnumerator GoGo2()
     {
-        yield return new WaitForSeconds(4f);
+        
         ChrDB.SetActive(true);
         yield return new WaitForSeconds(90f);
         start02 = true;
