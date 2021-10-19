@@ -307,7 +307,7 @@ public class Scense_02_Manager : MonoBehaviour
         yield return new WaitForSeconds(4f);
         Debug.Log("SoundC1 시작");
         Play2_1.Play();
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(20f);
         Debug.Log("SoundC1 끝남");
         coroutioneEnd01 = true;
     }
@@ -326,7 +326,7 @@ public class Scense_02_Manager : MonoBehaviour
     {
         Debug.Log("SoundC3 시작");
         Play2_3.Play();
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(13f);
         Debug.Log("SoundC3 끝남");
         coroutioneEnd03 = true;
     }
@@ -335,18 +335,19 @@ public class Scense_02_Manager : MonoBehaviour
     {
         Debug.Log("SoundC4 시작");
         Play2_4.Play();
-        yield return new WaitForSeconds(13f);
+        yield return new WaitForSeconds(15f);
         Debug.Log("SoundC4 끝남");
         coroutioneEnd04 = true;
 
         Debug.Log("SoundC5 시작");
         Play2_5.Play();
-        yield return new WaitForSeconds(10f);
-        Debug.Log("SoundC5 끝남");
-
         btSet.SetActive(true);
         btSetbt.SetActive(false);
         yield return new WaitForSeconds(10f);
+        Debug.Log("SoundC5 끝남");
+
+        
+        yield return new WaitForSeconds(15f);
         btSetbt.SetActive(true);
     }
     IEnumerator Btcount()
