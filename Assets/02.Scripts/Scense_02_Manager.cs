@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Scense_02_Manager : MonoBehaviour
 {
+    public GameObject StartSound;
+
     public GameObject Success01;
     public GameObject Success02;
     public GameObject Success03;
@@ -138,7 +140,6 @@ public class Scense_02_Manager : MonoBehaviour
         colt04 = collider02_4.GetComponent<Collider02_4>().collider024;
         colt05 = collider02_5.GetComponent<Collider02_5>().collider025;
         colt06 = collider02_6.GetComponent<Collider02_6>().collider026;
-        colt07 = collider02_7.GetComponent<Collider02_7>().collider027;
 
         
 
@@ -235,15 +236,11 @@ public class Scense_02_Manager : MonoBehaviour
         //사운드6 코루틴 중지(콜라이터, 트리거 생성)
         if (coroutioneEnd06 && coroutioneCountE06 < 1)
         {
-
-            
-
             coroutioneCountE06++;
             StopCoroutine("SoundC6");
             coroutioneStart09 = true;
             collider02_5.SetActive(true);
             point05.SetActive(true);
-
         }
 
 
@@ -263,23 +260,20 @@ public class Scense_02_Manager : MonoBehaviour
         //사운드9 코루틴 중지(콜라이터, 트리거 생성)
         if (coroutioneEnd09 && coroutioneCountE09 < 1)
         {
-            
-
             coroutioneCountE09++;
             StopCoroutine("SoundC9");
             coroutioneStart11 = true;
             collider02_6.SetActive(true);
             point06.SetActive(true);
-
         }
 
         //사운드11 코루틴 스타트
-        if (coroutioneStart11 && colt06 && coroutioneCount06 < 1)
+        if (coroutioneStart11 && colt06 && coroutioneCount09 < 1)
         {
             Success06.SetActive(true);
 
             Success05.SetActive(true);
-            coroutioneCount06++;
+            coroutioneCount09++;
             collider02_6.SetActive(false);
             point06.SetActive(false);
             StartCoroutine("SoundC11");
@@ -304,10 +298,11 @@ public class Scense_02_Manager : MonoBehaviour
 
     IEnumerator SoundC1()
     {
-        yield return new WaitForSeconds(4f);
+        StartSound.SetActive(true);
+        yield return new WaitForSeconds(5f);
         Debug.Log("SoundC1 시작");
         Play2_1.Play();
-        yield return new WaitForSeconds(20f);
+        yield return new WaitForSeconds(18f);
         Debug.Log("SoundC1 끝남");
         coroutioneEnd01 = true;
     }
@@ -317,7 +312,7 @@ public class Scense_02_Manager : MonoBehaviour
         //자이제 삼촌도 편하게 공부할 수 있을거야
         Debug.Log("SoundC2 시작");
         Play2_2.Play();
-        yield return new WaitForSeconds(13f);
+        yield return new WaitForSeconds(17f);
         Debug.Log("SoundC2 끝남");
         coroutioneEnd02 = true;
     }
@@ -326,7 +321,7 @@ public class Scense_02_Manager : MonoBehaviour
     {
         Debug.Log("SoundC3 시작");
         Play2_3.Play();
-        yield return new WaitForSeconds(13f);
+        yield return new WaitForSeconds(10f);
         Debug.Log("SoundC3 끝남");
         coroutioneEnd03 = true;
     }
@@ -340,7 +335,7 @@ public class Scense_02_Manager : MonoBehaviour
         coroutioneEnd04 = true;
 
         Debug.Log("SoundC5 시작");
-        Play2_5.Play();
+        
         btSet.SetActive(true);
         btSetbt.SetActive(false);
         yield return new WaitForSeconds(10f);
@@ -362,31 +357,18 @@ public class Scense_02_Manager : MonoBehaviour
     {
         Debug.Log("SoundC6 시작");
         Play2_6.Play();
-        yield return new WaitForSeconds(3f);
-        Debug.Log("SoundC6 끝남");
-        
-
-        Debug.Log("SoundC7 시작");
-        Play2_7.Play();
-        yield return new WaitForSeconds(11f);
-        Debug.Log("SoundC7 끝남");
-
-        Debug.Log("SoundC8 시작");
-        Play2_8.Play();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(19f);
+       
         Debug.Log("SoundC8 끝남");
         coroutioneEnd06 = true;
     }
+
+
     IEnumerator SoundC9()
     {
         Debug.Log("SoundC9 시작");
         Play2_9.Play();
-        yield return new WaitForSeconds(12f);
-        Debug.Log("SoundC9 끝남");
-
-        Debug.Log("SoundC10 시작");
-        Play2_10.Play();
-        yield return new WaitForSeconds(9f);
+        yield return new WaitForSeconds(22f);
         Debug.Log("SoundC10 끝남");
         coroutioneEnd09 = true;
     }

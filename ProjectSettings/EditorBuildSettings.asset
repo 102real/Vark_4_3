@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/cave scene 3.unity
     guid: 439528dbb0a2bb149aee28f2c96699de
+  - enabled: 1
+    path: Assets/01.Scenes/cave scene 4.unity
+    guid: b201ef670930c394484d983ef2627d4a
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: b5e68089555f79e44a34916a8ecc1c97,
       type: 2}
